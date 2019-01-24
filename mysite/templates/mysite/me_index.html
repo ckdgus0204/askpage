@@ -1,0 +1,53 @@
+
+
+{%load static%}
+<html>
+    
+    <head>
+        <title>My페이지</title>
+    <style>
+    body{
+        background-image: url('https://www.suyongso.com/files/attach/images/115/242/786/015/10d4672110f57863418c21bf2b964539.jpg');
+
+    }
+    </style> 
+    </head>
+    <body>
+            <nav>
+                    <h2>목차</h2>
+                    <ol>
+                        
+                        <li><a href="{% url 'mysite:me_index' %}">간단한 소개</a></li>
+                        <li><a href ="{% url 'mysite:ask_index' %}">QnA</a></li>
+                        
+                    </ol>
+                </nav>
+        <h1>   About Me</h1>
+        <div class="container">
+            <table border=1>
+                <tbody>
+                    <tr>
+                        <th>제목</th>
+                        <th>생성일</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                {% for me in me_all %}
+                    <tr>
+                        <td><a href="{% url 'mysite:me_detail' me.id %}">{{me.title}}</a></td>
+                        <td>{{me.updated_at}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="{%url 'mysite:me_new'%}"method="ME">{%csrf_token%}
+                    {{me_form.as_p}}
+                    <button type="submit" class="save btn btn-default">소개추가</button>
+            
+        </div>
+    </body>
+    
+</html>
+
+
+  

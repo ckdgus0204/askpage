@@ -1,0 +1,19 @@
+<head>
+        <style>
+            body{
+                background-image: url('https://www.suyongso.com/files/attach/images/115/242/786/015/10d4672110f57863418c21bf2b964539.jpg');
+        
+            }
+            </style>
+</head>
+<h1>새 소개 생성</h1>
+
+<form action="" method="me">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+
+    <input type="submit" value="작성">
+</form>
+

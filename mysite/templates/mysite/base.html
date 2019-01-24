@@ -1,0 +1,27 @@
+{%load static %}
+<html>
+    <head>
+        <title>ASK페이지</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> <!--부트스트렙 추가해주기  -->
+        <link rel="stylesheet" href="{% static 'css/mysite.css'%}">
+        
+                <style>
+                    body{
+                        background-image: url('https://www.suyongso.com/files/attach/images/115/242/786/015/10d4672110f57863418c21bf2b964539.jpg');
+                
+                    }
+                </style>
+        
+    </head>
+    <body>
+            <nav>
+                <h2>목차</h2>
+                <ol>
+                    
+                    <li><a href="{% url 'mysite:me_index' %}">간단한 소개</a></li>
+                    <li><a href ="{% url 'mysite:ask_index' %}">QnA</a></li>
+                    
+                </ol>
+            </nav>
+    </body>
+</html>

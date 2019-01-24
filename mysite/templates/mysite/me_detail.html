@@ -1,0 +1,25 @@
+
+{%load static%}
+<head>
+        <style>
+            body{
+                background-image: url('https://www.suyongso.com/files/attach/images/115/242/786/015/10d4672110f57863418c21bf2b964539.jpg');
+        
+            }
+            </style>
+</head>
+<h1>list</h1>
+{{me.title}}
+<br>
+{{me.text}}
+{% block content%}
+<html>
+<hr>
+<a href="{% url 'mysite:me_edit' me.id%} ">수정하기</a>
+<a href="{% url 'mysite:me_delete' me.id%}" onclick="return confirm('지울건가요')"> 삭제</a>
+
+<hr>
+
+</html>
+
+{% endblock%}

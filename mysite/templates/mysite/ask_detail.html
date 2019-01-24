@@ -1,0 +1,41 @@
+
+{%load static%}
+
+<h1>Ask</h1>
+
+질문:{{ask.text}}
+{% block content%}
+<html>
+<head>
+    <style>
+        body{
+            background-image: url('https://www.suyongso.com/files/attach/images/115/242/786/015/10d4672110f57863418c21bf2b964539.jpg');
+    
+        }
+        </style>
+</head>
+<hr>
+<a href="{% url 'mysite:ask_edit' ask.id%} ">수정하기</a>
+<a href="{% url 'mysite:ask_delete' ask.id%}" onclick="return confirm('지울건가요')"> 삭제</a>
+
+<hr>
+  <p>댓글 {{ ask.comments.count }}개</p>
+  
+    {% for comment in ask.comments.all %}
+      <div>
+        <div class="float-right">{{ comment.created_date }}</div>
+        <strong>{{ comment.nickname }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+        <div class="btn-group btn-group-sm" role="group">
+          <a href="{% url 'mysite:comment_delete' comment_id=comment.id %}" class="btn btn-secondary">삭제</a>
+        </div>
+        <hr>
+      </div>
+    {% empty %}
+        <p>아직 아무 댓글이 없어요 :(</p>
+    {% endfor %}<br>
+    <form action="{%url 'mysite:add_comment_to_ask' ask_id=ask.id%}"method="ASK">{%csrf_token%}
+        {{comment_form.as_p}}
+        <button type="submit" class="save btn btn-default">작성</button>
+{% endblock %}
+</html>
